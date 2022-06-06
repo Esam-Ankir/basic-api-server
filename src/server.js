@@ -9,7 +9,9 @@ const clothesRouter = require('./routes/clothes');
 const logger = require('./middleware/logger');
 const app = express();
 
-
+app.get("/",(req,res) => {
+    res.send("This is the home page");
+})
 app.use(express.json());
 app.use(logger);
 app.use(foodRouter);
