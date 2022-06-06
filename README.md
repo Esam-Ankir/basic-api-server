@@ -1,6 +1,26 @@
 # basic-api-server
 Dynamic API Phase 2: Perform CRUD Operations on a database
 
+
+# Submition Links
+
+
+## GitHub Repo:
+
+[GitHub Repo](https://github.com/Esam-Ankir/basic-api-server) 
+
+[Actions](https://github.com/Esam-Ankir/basic-api-server/actions)
+
+## Heroku deployment:
+
+[food route](https://api-server-esam.herokuapp.com/food) 
+
+[home page](https://api-server-esam.herokuapp.com/)
+
+[clothes route](https://api-server-esam.herokuapp.com/clothes)
+
+
+
 # Data Modeling
 
 Data Modeling: The process of taking a real world or conceptual idea and encoding it into Javascript's built in data types. Models typically describe the physical characteristics (properties) and behaviors (methods) of an object in a way that lets you write code that uses your models to problem solve and create applications.
