@@ -10,6 +10,7 @@ beforeAll(async () => {
 });
 
 describe('Web server', () => {
+  ////fot testing food models:
   it('Should respond with 404 status on an invalid route', async () => {
     const response = await mockRequest.get('/foo');
     expect(response.status).toBe(404);
@@ -42,6 +43,7 @@ describe('Web server', () => {
     const response = await mockRequest.delete('/food/1');
     expect(response.status).toBe(204);
   });
+
 });
 afterAll(async () => {
   await db.drop();

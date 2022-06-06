@@ -1,50 +1,51 @@
-"use strict";
-const express = require("express");
-const { Clothes } = require("../models/clothes");
+'use strict';
+const express = require('express');
+const { Clothe } = require('../models/clothes');
 const clothesRouter = express.Router();
 // const validator = require('../middleware/validator');
 
-clothesRouter.get("/clothes", getClothes);
-// app.get("/clothes", validator, (req, res) => {getClothes});
-clothesRouter.get("/clothes/:id", getOneClothe);
-clothesRouter.post("/clothes", createClothes);
-clothesRouter.put("/clothes/:id", updateClothe);
-clothesRouter.delete("/clothes/:id", deleteClothe);
 
+clothesRouter.get('/clothe', getClothes);
+clothesRouter.get('/clothe/:id', getOneClothe);
+clothesRouter.post('/clothe', addClothe);
+clothesRouter.put('/clothe/:id', updateClothe);
+clothesRouter.delete('/clothe/:id', deleteClothe);
+// app.get("/clothes", validator, (req, res) => {getClothes});
 
 async function getClothes(req, res) {
-    const allClothes = await Clothes.findAll();
-    res.status(200).json(allClothes);
+  const clothes = await Clothe.findAll();
+  res.status(200).json(clothes);
 }
-
 async function getOneClothe(req, res) {
-    const clotheId = parseInt(req.params.id);
-    let food = await Clothes.findOne({ where: { id: clotheId } });
-    res.status(200).json(food);
+  const clotheId = parseInt(req.params.id);
+  const clothe = await Clothe.findOne({ where: { id: clotheId } });
+  res.status(200).json(clothe);
 }
-
-async function createClothes(req, res) {
-    let newFood = req.body;
-    let food = await Clothes.create(newFood);
-    res.status(201).json(food);
+async function addClothe(req, res) {
+  const newClothe = req.body;
+  const clothe = await Clothe.create(newClothe);
+  res.status(201).json(clothe);
 }
-
 async function updateClothe(req, res) {
-    let clotheId = parseInt(req.params.id);
-    let updateClothe = req.body; 
-    let foundClothe = await Clothes.findOne({ where: { id: clotheId } });
-    if (foundClothe) {
-        let updatedClothe = await foundClothe.update(updateClothe);
-        res.status(201).json(updatedClothe);
-    } else {
-        res.status(404);
-    }
+  const clotheId = parseInt(req.params.id);
+  const updateClothe = req.body;
+  const foundClothe = await Clothe.findOne({ where: { id: clotheId } });
+  if (foundClothe) {
+    const updatedClothe = await foundClothe.update(updateClothe);
+    res.status(201).json(updatedClothe);
+  } else {
+    res.status(404).json({ message: 'clothe item is not found' });
+  }
 }
 async function deleteClothe(req, res) {
-    let clotheId = parseInt(req.params.id);
-    let deleteClothe = await Clothes.destroy({ where: { id: clotheId } });
-    res.status(204).json(deleteClothe); 
+  const clotheId = parseInt(req.params.id);
+  const foundClothe = await Clothe.findOne({ where: { id: clotheId } });
+  if (foundClothe) {
+    await foundClothe.destroy();
+    res.status(204).json({ message: 'clothe item removed' });
+  } else {
+    res.status(404).json({ message: 'clothe item is not found' });
+  }
 }
 module.exports = clothesRouter;
-
 

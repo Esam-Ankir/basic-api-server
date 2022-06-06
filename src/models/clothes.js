@@ -2,7 +2,7 @@
 
 // Our table schema
 const Clothes = (sequelize, DataTypes) =>
-    sequelize.define("clothes", {
+    sequelize.define("clothe", {
         clotheName: {
             type: DataTypes.STRING,
             allowNull: false,
