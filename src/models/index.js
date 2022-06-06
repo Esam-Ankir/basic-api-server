@@ -15,7 +15,7 @@ let sequelizeOptions =
             protocol: 'postgres',
             dialectOptions: {
                 ssl: { require: true, rejectUnauthorized: false} ,
-                native: true
+                // native: true
             }
         } : {};
 
